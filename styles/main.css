@@ -1,48 +1,142 @@
 * {
+	box-sizing: border-box;
+	margin: 0;
     padding: 0;
-    margin: 0;
+	/* to fix the way Safari 14+ reads certain Google Fonts incorrectly */
+	-webkit-locale: auto;
+  	white-space: normal;
 }
 
+body {
+	background: #bada55;
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+/* nav styles using Flexbox (screens greater than 899px) */
+/* Logo Styling */
+.header {
+    margin-top: 2rem;
+}
+
+.header .logo {
+    font-size: 2.25rem;
+    height: 76px;
+    letter-spacing: 0.07rem;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: bottom;
+    width: 93.44px;
+}
+
+/* End Header Logo Styling */
+
+/* nav styles using Flexbox (screens greater than 899px) */
 nav {
-    width: 100vw;
-    background: #D6EFFF;
+    /* background: #D6EFFF; */
+	/* changed to the below in the production version of the portfolio site for desktop navigation (> 899px) */
+	background: transparent;
+	width: 100vw;
 }
 
 ul {
     display: flex;
     justify-content: flex-end;
-	/* added in my production styling of the ul for the desktop navigation */
+	margin-bottom: 1.5rem;
+	/* added in my production styling of the ul for the desktop navigation greater than 899px */
 	margin-top: -2rem;
-    margin-bottom: 1.5rem;
 }
 
 li {
+	font-size: 2.75vh;
     list-style-type: none;
     /* margin: 2vw; */
-	/* changed to the below in my production styling of the ul for the desktop navigation */
+	/* changed to the below in my production styling of the ul for the desktop navigation greater than 899px */
 	margin: 0.5vw;
-    font-size: 2.75vh;
 }
 
 a {
-    text-decoration: none;
-    color: black;
+	color: black;
+	cursor: pointer;
     padding: 2vw;
-    font-family: monospace;
+	text-decoration: none;
 }
 
 a:hover {
-    color: #2f6690;
+    /* color: #2f6690; */
+	/* changed in production portfolio site for desktop navigation (greater than width of 899px)*/
+	color: #800080;
 }
 
-@media (max-width: 599px) {
+.hamburger {
+	display: none;
+}
+
+/* End nav styles using Flexbox (screens greater than 899px) */
+
+/* media query for site navigation for screens smaller than 900px */
+@media (max-width: 899px) {
+
+	.header {
+		margin-top: 0.75rem;
+	}
+
     ul {
+		/* display: block; */
         flex-direction: column;
+		margin-top: 5rem;
     }
     li {
-        margin: 0;
+        margin: 0 0 0 1.25rem;
     }
     a {
         display: block;
     }
+
+	/* Responsive Hamburger menu styling */
+	.hamburger {
+        background-color: transparent;
+        /* show the hamburger menu image */
+        background-image: url("https://ljc-dev.github.io/testing0/ham.svg");
+        background-size: 100%;
+        border: none;
+        cursor: pointer;
+        display: block;
+        height: 36px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 36px;
+        /* always keep ham on top of everything */
+        z-index: 1000;
+    }
+
+	/* change hamburger image to close */
+
+	.showClose {
+        background-image: url("https://ljc-dev.github.io/testing0/ham-close.svg");
+        background-size: 100%;
+    }
+
+	.navbar {
+        background: #6897BB;
+        height: 100vh;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        /* hide the menu above the screen by default */
+        transform: translateY(-100%);
+        /* transition adds a little animation when sliding in and out the menu */
+        transition: transform 0.2s ease;
+        width: 100vw;
+        z-index: 10;
+    }
+
+	.showNav {
+        /* show the menu */
+        transform: translateY(0);
+    }
 }
+
+/* End media query for site navigation for screens smaller than 900px */
