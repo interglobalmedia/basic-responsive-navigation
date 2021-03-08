@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    width: 100vw;
+    background: #D6EFFF;
+}
+
+ul {
+    display: flex;
+    justify-content: flex-end;
+	/* added in my production styling of the ul for the desktop navigation */
+	margin-top: -2rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    list-style-type: none;
+    /* margin: 2vw; */
+	/* changed to the below in my production styling of the ul for the desktop navigation */
+	margin: 0.5vw;
+    font-size: 2.75vh;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    padding: 2vw;
+    font-family: monospace;
+}
+
+a:hover {
+    color: #2f6690;
+}
+
+@media (max-width: 599px) {
+    ul {
+        flex-direction: column;
+    }
+    li {
+        margin: 0;
+    }
+    a {
+        display: block;
+    }
+}
