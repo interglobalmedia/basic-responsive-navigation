@@ -65,7 +65,7 @@ The ***above*** are the ***pages*** you will ***end up*** with for your `portfol
 <section class="section">
 	<h2 class="sentence">Adding a header element to wrap around the nav element</h2>
 
-***First*** we **need** to ***add*** a `header element` to the ***top*** of the `body` of the `HTML document`. it will ***wrap around*** the `nav element`. We are ***doing*** this ***because*** we will be ***adding*** `additional content` to the `"header" area` of ***each*** of our `HTML pages`. So ***now*** the ``"header area"`` ***containing*** the `navigation menu` should ***look*** like ***this***:
+***First*** we **need** to ***add*** a `header element` to the ***top*** of the `body` of the `HTML document`. It will ***wrap around*** the `nav element`. We are ***doing*** this ***because*** we will be ***adding*** `additional content` to the `"header" area` of ***each*** of our `HTML pages`. So ***now*** the ``"header area"`` ***containing*** the `navigation menu` should ***look*** like ***this***:
 
 ```html
 <header>
@@ -261,6 +261,8 @@ The `same process` ***applies*** if you are **now using** `Atom`.
 <section class="section">
     <h2 class="sentence">Creating an images folder for the images from Project 1</h2>
 
+`Update 3.9.21`: We are ***not going*** to be **using** `Unsplash` **images** in our `portfolio site`, so this `slide` should ***only*** be **used** as a **general reference**!
+
 Your `project folder` should  ***already contain*** `images` you ***used*** for `Project 1`. This will ***only apply*** to `Unsplash images` you may have ***downloaded*** from your `collection` ***saved there*** (if that's the way you ***wanted*** to ***go***).  
 
 ***Now*** we ***want*** to ***organize*** our `folder` ***even more*** by ***adding*** a ***new*** `images folder` in ***which*** we will ***place*** those `images`.
@@ -320,7 +322,7 @@ We will `discuss` (`discussed`) ***more about*** the `box-sizing` ***property de
 
 The ***first thing*** in our `navigation menu` we ***have*** to ***style*** for ***larger screens*** is the `header logo`.
 
-We ***will*** be ***using*** the `.header` ***class*** we ***applied*** to the the `header element` and the `.logo` ***class*** we ***applied*** to the `button element`.
+We ***will*** be ***using*** the `.header` ***class*** we ***applied*** to the the `header element` and the `.logo` ***class*** we ***applied*** to the `anchor element`.
 
 I ***add*** the ***following*** `CSS` to my `main.css` ***file*** `right below` the ***desktop*** `rule set` for my `hamburger` ***class***:
 
