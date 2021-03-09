@@ -79,6 +79,9 @@ a:hover {
 
 	.header {
 		margin-top: 0.75rem;
+		background: pink;
+		position: sticky;
+		top: 0;
 	}
 
     ul {
