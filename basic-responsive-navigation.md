@@ -828,7 +828,7 @@ What we **can do** to ***fix this*** is to **add** the `position property` to th
 
 ```css
 .header {
-	background: pink;
+	background: rgba(104, 151, 187, 1);
 	margin-top: 0.75rem;
 	top: 0;
 }
@@ -877,6 +877,162 @@ This does ***not affect*** how my `CSS` **targets** the `h1 element` in the `ext
 <aside>
 	Note: Go through the steps of changing the CSS for the header in my production portfolio site external stylesheet, and then upload it to Namecheap and show the changes. Then test the markup with the [W3C HTML Validation Service](https://validator.w3.org/).
 </aside>
+
+</section>
+
+---
+
+<section class="section">
+	<h2 class="sentence">No position sticky to header in index.html</h2>
+
+I ended up not adding the property declaration of `position: sticky;` to my header in index.html, because there is no scroll there. And since there is no scroll because there is not much content on the page, I found no reason for making the header sticky. That meant, however, that I had to target it differently from the header in the other pages on my site. That meant that I had to refactor the header element markup in index.html and then make some changes based on the markup refactoring in my external stylesheet.
+
+So this is what the header in my index.html looks like now:
+
+```html5
+<header class="index-header">
+	<a class="logo"
+	   href="#">MDC</a>
+	<button class="hamburger"
+			aria-label="Right-Align"></button>
+	<nav class="navbar">
+		<ul>
+			<li>
+				<a class="menu-link"
+				   href="index.html">Home</a>
+			</li>
+			<li>
+				<a class="menu-link"
+				   href="portfolio.html">Portfolio</a>
+			</li>
+			<li>
+				<a class="menu-link"
+				   href="resume.html">Résumé</a>
+			</li>
+			<li>
+				<a class="menu-link"
+				   href="about.html">About</a>
+			</li>
+			<li>
+				<a class="menu-link"
+				   href="contact.html">Contact</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+```
+
+The only difference is that I changed the header element's header class to "index-header". With that naming, I know that this class targets the header in index.html.
+
+Next, I had to make the following changes in my external stylesheet:
+
+```css
+/* nav styles using Flexbox (screens greater than 899px) */
+/* Logo Styling .index-header class targets the header element in index.html */
+.header, .index-header {
+    margin-top: 2rem;
+}
+
+.header .logo, .index-header .logo {
+    font-size: 2.25rem;
+    height: 76px;
+    letter-spacing: 0.07rem;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: bottom;
+    width: 93.44px;
+}
+
+/* End Header Logo Styling */
+
+/* media query for site navigation for screens smaller than 900px */
+@media (max-width: 899px) {
+
+	.header {
+		background: rgba(104, 151, 187, 1);
+		margin-top: 0;
+		position: sticky;
+		top: 0;
+	}
+
+	/* separate styling for the header in index.html because did not make it sticky
+	or add abackground because there is no scroll. Not enough content! Tested on iphone4 */
+	.index-header .logo {
+		margin-top: 0.25rem;
+	}
+
+	.header .logo {
+		padding-top: 1rem;
+	}
+
+    ul {
+		/* display: block; */
+        flex-direction: column;
+		margin-top: 5rem;
+    }
+    li {
+        margin: 0 0 0 1.25rem;
+    }
+    a {
+        display: block;
+    }
+
+	/* Responsive Hamburger menu styling */
+	.hamburger {
+        background-color: transparent;
+        /* show the hamburger menu image */
+        background-image: url("https://ljc-dev.github.io/testing0/ham.svg");
+        background-size: 100%;
+        border: none;
+        cursor: pointer;
+        display: block;
+        height: 36px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 36px;
+        /* always keep ham on top of everything */
+        z-index: 1000;
+    }
+
+	/* change hamburger image to close */
+
+	.showClose {
+        background-image: url("https://ljc-dev.github.io/testing0/ham-close.svg");
+        background-size: 100%;
+    }
+
+	.navbar {
+        background: #6897BB;
+        height: 100vh;
+        left: 0;
+        overflow-y: hidden;
+        position: fixed;
+        top: 0;
+        /* hide the menu above the screen by default */
+        transform: translateY(-100%);
+        /* transition adds a little animation when sliding in and out the menu */
+        transition: transform 0.2s ease;
+        width: 100vw;
+		/* needed for me because of my intro box in index.html.
+		Otherwise navigation backgrop would be behind the intro box when opened */
+		z-index: 10;
+    }
+
+	.showNav {
+        /* show the menu */
+        transform: translateY(0);
+    }
+}
+
+/* End media query for site navigation for screens smaller than 900px */
+```
+
+What is **different** ***here***, is that I **add** the `property declaration` of `position: sticky;` to the `header element`'s `.header` **class** as well as the `property declaration` of `margin-top: 0;` and `top: 0;`. This is to **make sure** that the **top** of the `header` **touches** the **top** of the `viewport`. I ***don't want*** any gap **showing** between the `viewport` and the `header` **backdrop**.
+
+***Next***, I also had to ***change*** the `position` **property declaration** for the `hamburger menu`'s `.hamburger` **class**. I ***changed*** it from `fixed` to `absolute` so that the `hamburger` would **move** with the `scroll` of the `viewport` (`scrollbar`) ***instead*** of **remaining** in a `fixed position` ***relative*** to the `viewport`.
+
+Next, I had to **change** the `z-index` of the `nav element`'s `.navbar` **class** which ***targets*** the `nav element` in **smaller screens**. I had to **give it** a `z-index` of `10` so that it would be **placed above** the `intro-box` in the `index.html` **page** (**home page**).
 
 </section>
 
